@@ -23,7 +23,14 @@ const readouts = [
   }, color: "text-red-400" },
 ];
 
-const checklistItems = [
+const checklistItems: {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  links?: { label: string; url: string }[];
+  steps?: string[];
+}[] = [
   {
     id: "christ",
     icon: "✝️",
@@ -144,7 +151,7 @@ export default function RSVP() {
                   <p className="text-stone-500 text-sm mb-3">{item.description}</p>
 
                   {/* Links */}
-                  {"links" in item && (
+                  {item.links && (
                     <ul className="space-y-1">
                       {item.links.map((link) => (
                         <li key={link.label}>
@@ -162,7 +169,7 @@ export default function RSVP() {
                   )}
 
                   {/* Hiccup steps */}
-                  {"steps" in item && (
+                  {item.steps && (
                     <ol className="list-decimal list-inside space-y-1 text-sm text-stone-500">
                       {item.steps.map((step, i) => (
                         <li key={i}>{step}</li>
