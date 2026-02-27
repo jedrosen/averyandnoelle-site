@@ -16,6 +16,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Avery & Noelle",
   description: "We're getting married!",
+  openGraph: {
+    title: "Avery & Noelle",
+    description: "We're getting married!",
+    images: [
+      {
+        url: "https://cdn-rileygrey.s3.amazonaws.com/295467/39a5de2d-e16d-45cb-bdd7-bc8c9282f4da.png",
+        width: 1200,
+        height: 630,
+        alt: "Avery & Noelle",
+      },
+    ],
+  },
 };
 
 const navLinks = [
