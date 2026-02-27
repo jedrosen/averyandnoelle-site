@@ -21,16 +21,17 @@ function tickDown(t: { days: number; hours: number; minutes: number; seconds: nu
 }
 
 export default function CountdownTimer() {
-  const [time, setTime] = useState(randomTime);
+  const [time, setTime] = useState<ReturnType<typeof randomTime> | null>(null);
   const tickCount = useRef(0);
 
   useEffect(() => {
+    setTime(randomTime());
     const interval = setInterval(() => {
       tickCount.current += 1;
       if (tickCount.current % 5 === 0) {
         setTime(randomTime());
       } else {
-        setTime((prev) => tickDown(prev));
+        setTime((prev) => tickDown(prev ?? randomTime()));
       }
     }, 1000);
     return () => clearInterval(interval);
@@ -39,10 +40,10 @@ export default function CountdownTimer() {
   return (
     <div className="flex gap-8 justify-center">
       {[
-        { label: "Days", value: time.days },
-        { label: "Hours", value: time.hours },
-        { label: "Minutes", value: time.minutes },
-        { label: "Seconds", value: time.seconds },
+        { label: "Days", value: time?.days ?? 0 },
+        { label: "Hours", value: time?.hours ?? 0 },
+        { label: "Minutes", value: time?.minutes ?? 0 },
+        { label: "Seconds", value: time?.seconds ?? 0 },
       ].map(({ label, value }) => (
         <div key={label} className="text-center">
           <div className="text-4xl font-serif font-bold text-stone-800">
