@@ -3,7 +3,19 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[88vh] px-4 text-center">
+    <div className="relative flex flex-col items-center justify-center min-h-[88vh] px-4 text-center overflow-hidden">
+      {/* Background photo */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="https://cdn-rileygrey.s3.amazonaws.com/295467/39a5de2d-e16d-45cb-bdd7-bc8c9282f4da.png"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      {/* Overlay to keep text readable */}
+      <div className="absolute inset-0 bg-[#faf8f5]/75" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center">
       <p className="text-stone-400 uppercase tracking-[0.3em] text-xs mb-6">
         You&apos;re invited to the wedding of
       </p>
@@ -18,8 +30,8 @@ export default function Home() {
 
       <div className="w-20 h-px bg-stone-300 my-8" />
 
-      <p className="text-stone-500 text-lg mb-1">Triple S Ranch</p>
-      <p className="text-stone-400 text-sm italic mb-10">
+      <p className="text-stone-800 text-lg mb-1 font-medium">Triple S Ranch</p>
+      <p className="text-stone-700 text-sm italic mb-10">
         (Short for Shit Shower Shave)
       </p>
 
@@ -40,6 +52,7 @@ export default function Home() {
         >
           Schedule
         </Link>
+      </div>
       </div>
     </div>
   );

@@ -44,9 +44,9 @@ const events: Event[] = [
           href={SEVEN_ELEVEN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-stone-800 transition-colors"
+          className="inline-block mt-2 px-4 py-1.5 bg-stone-800 text-white text-xs uppercase tracking-widest hover:bg-stone-600 transition-colors rounded-sm"
         >
-          View full menu →
+          View Full Menu →
         </a>
       </>
     ),
@@ -75,11 +75,6 @@ const events: Event[] = [
     time: "11:02 PM",
     title: "Hide",
     description: "",
-  },
-  {
-    time: "11:03 PM",
-    title: "Carriages Depart",
-    description: "Safe travels. Drive safe.",
   },
 ];
 
