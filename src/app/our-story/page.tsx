@@ -12,7 +12,7 @@ export default function OurStory() {
 
       <div className="flex justify-center">
         <iframe
-          src="https://www.youtube.com/embed/gHaO0fHVANs"
+          src="https://www.youtube.com/embed/gHaO0fHVANs?autoplay=1&mute=1"
           title="Our Story"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
