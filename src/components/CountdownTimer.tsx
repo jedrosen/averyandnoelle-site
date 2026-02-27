@@ -1,55 +1,48 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-// When the date is confirmed, set this to: new Date("YYYY-MM-DD")
-const WEDDING_DATE: Date | null = null;
+function randomTime() {
+  return {
+    days: Math.floor(Math.random() * 999),
+    hours: Math.floor(Math.random() * 24),
+    minutes: Math.floor(Math.random() * 60),
+    seconds: Math.floor(Math.random() * 60),
+  };
+}
+
+function tickDown(t: { days: number; hours: number; minutes: number; seconds: number }) {
+  let { days, hours, minutes, seconds } = t;
+  if (seconds > 0) return { days, hours, minutes, seconds: seconds - 1 };
+  if (minutes > 0) return { days, hours, minutes: minutes - 1, seconds: 59 };
+  if (hours > 0) return { days, hours: hours - 1, minutes: 59, seconds: 59 };
+  if (days > 0) return { days: days - 1, hours: 23, minutes: 59, seconds: 59 };
+  return randomTime();
+}
 
 export default function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [time, setTime] = useState(randomTime);
+  const tickCount = useRef(0);
 
   useEffect(() => {
-    if (!WEDDING_DATE) return;
-
-    const tick = () => {
-      const diff = WEDDING_DATE.getTime() - Date.now();
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
+    const interval = setInterval(() => {
+      tickCount.current += 1;
+      if (tickCount.current % 5 === 0) {
+        setTime(randomTime());
+      } else {
+        setTime((prev) => tickDown(prev));
       }
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((diff % (1000 * 60)) / 1000),
-      });
-    };
-
-    tick();
-    const interval = setInterval(tick, 1000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  if (!WEDDING_DATE) {
-    return (
-      <p className="text-stone-400 text-sm italic">
-        Countdown coming soon...
-      </p>
-    );
-  }
 
   return (
     <div className="flex gap-8 justify-center">
       {[
-        { label: "Days", value: timeLeft.days },
-        { label: "Hours", value: timeLeft.hours },
-        { label: "Minutes", value: timeLeft.minutes },
-        { label: "Seconds", value: timeLeft.seconds },
+        { label: "Days", value: time.days },
+        { label: "Hours", value: time.hours },
+        { label: "Minutes", value: time.minutes },
+        { label: "Seconds", value: time.seconds },
       ].map(({ label, value }) => (
         <div key={label} className="text-center">
           <div className="text-4xl font-serif font-bold text-stone-800">
