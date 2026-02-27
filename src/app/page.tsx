@@ -18,10 +18,6 @@ export default function Home() {
 
       <div className="w-20 h-px bg-stone-300 my-8" />
 
-      <p className="font-serif text-2xl md:text-3xl text-stone-600 mb-2">
-        [DATE TBD]
-      </p>
-
       <p className="text-stone-500 text-lg mb-1">Triple S Ranch</p>
       <p className="text-stone-400 text-sm italic mb-10">
         (Short for Shit Shower Shave)

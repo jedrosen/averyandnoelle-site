@@ -1,15 +1,89 @@
-export default function Schedule() {
-  const events = [
-    { time: "3:00 PM", title: "Guests Arrive", description: "Find your seats, grab a drink, pretend you know everyone." },
-    { time: "3:30 PM", title: "Ceremony", description: "The main event. Please silence your phones. Please." },
-    { time: "4:00 PM", title: "Cocktail Hour", description: "Mingle, drink, and photograph the couple being photographed." },
-    { time: "5:30 PM", title: "Dinner", description: "See Travel page for catering details." },
-    { time: "7:00 PM", title: "First Dance", description: "Opus by Eric Prydz. Obviously." },
-    { time: "7:15 PM", title: "Dancing", description: "More Opus by Eric Prydz." },
-    { time: "11:00 PM", title: "Last Song", description: "Opus by Eric Prydz." },
-    { time: "11:01 PM", title: "Carriages Depart", description: "Safe travels. Drive safe." },
-  ];
+const SEVEN_ELEVEN_URL = "https://www.google.com/maps/search/7-Eleven+near+me";
 
+type Event = {
+  time: string;
+  title: string;
+  description: React.ReactNode;
+};
+
+import React from "react";
+
+const events: Event[] = [
+  {
+    time: "3:00 PM",
+    title: "Guests Arrive",
+    description: "Find your seats, grab a drink, pretend you know everyone.",
+  },
+  {
+    time: "3:05 PM",
+    title: "Avery Stuffs His Pockets with Quarters",
+    description: "He needs to make weight. Please do not ask questions.",
+  },
+  {
+    time: "3:29 PM",
+    title: "Avery & Ben Kaplan Freaky Friday Back Into Each Other's Bodies",
+    description: "One minute buffer before the ceremony. They've done this before.",
+  },
+  {
+    time: "3:30 PM",
+    title: "Ceremony",
+    description: "The main event. Please silence your phones. Please.",
+  },
+  {
+    time: "4:00 PM",
+    title: "Cocktail Hour",
+    description: "Mingle, drink, and photograph the couple being photographed.",
+  },
+  {
+    time: "5:30 PM",
+    title: "Dinner",
+    description: (
+      <>
+        World-class catering.{" "}
+        <a
+          href={SEVEN_ELEVEN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-stone-800 transition-colors"
+        >
+          View full menu →
+        </a>
+      </>
+    ),
+  },
+  {
+    time: "7:00 PM",
+    title: "First Dance",
+    description: "Opus by Eric Prydz. Obviously.",
+  },
+  {
+    time: "7:15 PM",
+    title: "Dancing",
+    description: "More Opus by Eric Prydz.",
+  },
+  {
+    time: "11:00 PM",
+    title: "Last Song",
+    description: "Opus by Eric Prydz.",
+  },
+  {
+    time: "11:01 PM",
+    title: "Run",
+    description: "",
+  },
+  {
+    time: "11:02 PM",
+    title: "Hide",
+    description: "",
+  },
+  {
+    time: "11:03 PM",
+    title: "Carriages Depart",
+    description: "Safe travels. Drive safe.",
+  },
+];
+
+export default function Schedule() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-20">
       <div className="text-center mb-16">
@@ -33,7 +107,9 @@ export default function Schedule() {
             </div>
             <div>
               <h3 className="font-serif text-lg text-stone-800">{event.title}</h3>
-              <p className="text-stone-500 text-sm mt-0.5">{event.description}</p>
+              {event.description && (
+                <p className="text-stone-500 text-sm mt-0.5">{event.description}</p>
+              )}
             </div>
           </div>
         ))}
