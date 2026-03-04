@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Link from "next/link";
-import FeedbackTab from "@/components/FeedbackTab";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -33,6 +32,7 @@ export const metadata: Metadata = {
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/feedback", label: "Feedback" },
   { href: "/our-story", label: "Our Story" },
   { href: "/gallery", label: "Gallery" },
   { href: "/schedule", label: "Schedule" },
@@ -72,7 +72,6 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <FeedbackTab />
         <main className="min-h-screen bg-[#faf8f5]">{children}</main>
         <footer className="border-t border-stone-200 py-6 text-center text-xs text-stone-400">
           Avery & Noelle · [DATE TBD] · Triple S Ranch
