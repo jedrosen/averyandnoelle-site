@@ -19,14 +19,23 @@ export default function FeedbackPage() {
   const [name, setName] = useState("");
   const [section, setSection] = useState("General");
   const [suggestion, setSuggestion] = useState("");
+  const [priority, setPriority] = useState("Low — Nice to have");
   const [checked, setChecked] = useState<Record<number, boolean>>({});
   const [apology, setApology] = useState("");
+  const [submissionId, setSubmissionId] = useState<string | null>(null);
 
   const allChecked =
     CHECKBOXES.every((_, i) => checked[i]) && apology.trim().length >= 20;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const res = await fetch("/api/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "submission", name, section, suggestion, priority }),
+    });
+    const data = await res.json();
+    setSubmissionId(data.id ?? null);
     setStep("roast");
   }
 
@@ -34,13 +43,28 @@ export default function FeedbackPage() {
     setStep("apologize");
   }
 
-  function handleFinalClose() {
+  async function handleFinalClose() {
+    await fetch("/api/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "apology",
+        submissionId,
+        name,
+        section,
+        suggestion,
+        apology,
+        boxesChecked: CHECKBOXES,
+      }),
+    });
     setStep("done");
     setName("");
     setSection("General");
     setSuggestion("");
+    setPriority("Low — Nice to have");
     setChecked({});
     setApology("");
+    setSubmissionId(null);
   }
 
   return (
@@ -158,7 +182,11 @@ export default function FeedbackPage() {
                 <label className="block text-xs uppercase tracking-widest text-stone-500 mb-1.5">
                   Priority
                 </label>
-                <select className="w-full border border-stone-200 rounded px-4 py-2.5 text-sm text-stone-700 focus:outline-none focus:border-stone-400 transition-colors bg-white">
+                <select
+                  value={priority}
+                  onChange={(e) => setPriority(e.target.value)}
+                  className="w-full border border-stone-200 rounded px-4 py-2.5 text-sm text-stone-700 focus:outline-none focus:border-stone-400 transition-colors bg-white"
+                >
                   <option>Low — Nice to have</option>
                   <option>Medium — Should fix</option>
                   <option>High — Blocking issue</option>

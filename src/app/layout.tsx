@@ -32,7 +32,6 @@ export const metadata: Metadata = {
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/feedback", label: "Feedback" },
   { href: "/our-story", label: "Our Story" },
   { href: "/gallery", label: "Gallery" },
   { href: "/schedule", label: "Schedule" },
@@ -41,6 +40,7 @@ const navLinks = [
   { href: "/registry", label: "Registry" },
   { href: "/dj", label: "DJ" },
   { href: "/guest-list", label: "Guest List" },
+  { href: "/feedback", label: "Website Feedback" },
 ];
 
 export default function RootLayout({
