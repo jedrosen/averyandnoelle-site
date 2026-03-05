@@ -70,51 +70,31 @@ export default function FeedbackPage() {
   return (
     <>
       <style>{`
-        @keyframes flash-text {
-          0%   { color: #ef4444; transform: scale(1); }
-          15%  { color: #a855f7; transform: scale(1.18); letter-spacing: 0.12em; }
-          30%  { color: #f97316; transform: scale(0.88); letter-spacing: 0.04em; }
-          45%  { color: #eab308; transform: scale(1.14); letter-spacing: 0.1em; }
-          60%  { color: #ec4899; transform: scale(0.93); letter-spacing: 0.06em; }
-          75%  { color: #ef4444; transform: scale(1.2);  letter-spacing: 0.14em; }
-          90%  { color: #06b6d4; transform: scale(0.9);  letter-spacing: 0.03em; }
-          100% { color: #ef4444; transform: scale(1); }
+        @keyframes pulse-scale {
+          0%, 100% { transform: scale(1); }
+          50%       { transform: scale(1.12); }
         }
         @keyframes strobe-bg {
           0%, 100% { background-color: #000; }
-          20%  { background-color: #180000; }
-          40%  { background-color: #000; }
-          60%  { background-color: #0d0018; }
-          80%  { background-color: #000; }
-        }
-        @keyframes shake {
-          0%, 100% { transform: translateX(0) rotate(0deg); }
-          10% { transform: translateX(-6px) rotate(-1deg); }
-          20% { transform: translateX(6px) rotate(1deg); }
-          30% { transform: translateX(-5px) rotate(-0.5deg); }
-          40% { transform: translateX(5px) rotate(0.5deg); }
-          50% { transform: translateX(-4px) rotate(-1deg); }
-          60% { transform: translateX(4px) rotate(0deg); }
-          70% { transform: translateX(-3px) rotate(0.5deg); }
-          80% { transform: translateX(3px) rotate(-0.5deg); }
-          90% { transform: translateX(-1px) rotate(0deg); }
+          50%      { background-color: #180000; }
         }
         @keyframes sub-flash {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
         }
         .anim-flash-text {
-          animation: flash-text 0.7s ease-in-out infinite;
+          animation: pulse-scale 1.4s ease-in-out infinite;
           display: inline-block;
+          color: #ef4444;
         }
         .anim-strobe-bg {
-          animation: strobe-bg 0.5s ease-in-out infinite;
+          animation: strobe-bg 1.2s ease-in-out infinite;
         }
         .anim-shake {
-          animation: shake 0.5s ease-in-out infinite;
+          /* no shake */
         }
         .anim-sub-flash {
-          animation: sub-flash 0.9s ease-in-out infinite;
+          animation: sub-flash 1.2s ease-in-out infinite;
         }
       `}</style>
 
