@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -76,6 +77,7 @@ export default function RootLayout({
         <footer className="border-t border-stone-200 py-6 text-center text-xs text-stone-400">
           Avery & Noelle · [DATE TBD] · Triple S Ranch
         </footer>
+        <Analytics />
       </body>
     </html>
   );
