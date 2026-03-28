@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 const navLinks = [
-  { href: "/", label: "Home" },
+  { href: "/home", label: "Home" },
   { href: "/our-story", label: "Our Story" },
   { href: "/gallery", label: "Gallery" },
   { href: "/schedule", label: "Schedule" },

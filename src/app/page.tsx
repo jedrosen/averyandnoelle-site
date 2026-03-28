@@ -1,9 +1,13 @@
-import CountdownTimer from "@/components/CountdownTimer";
-import Link from "next/link";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { useState } from "react";
+
+export default function GatePage() {
+  const [confirmed, setConfirmed] = useState(false);
+
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[88vh] px-4 text-center overflow-hidden">
+    <div className="relative flex flex-col items-center min-h-[88vh] overflow-hidden">
       {/* Background photo */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -11,48 +15,109 @@ export default function Home() {
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {/* Overlay to keep text readable */}
-      <div className="absolute inset-0 bg-[#faf8f5]/75" />
+      {/* Cream overlay */}
+      <div className="absolute inset-0 bg-[#faf8f5]/80" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center">
-      <p className="text-stone-400 uppercase tracking-[0.3em] text-xs mb-6">
-        You&apos;re invited to the wedding of
-      </p>
-
-      <h1 className="font-serif text-7xl md:text-9xl font-bold text-stone-800 leading-none mb-4">
-        Avery
-        <br />
-        <span className="text-stone-400 text-4xl md:text-5xl font-normal italic">&amp;</span>
-        <br />
-        Noelle
-      </h1>
-
-      <div className="w-20 h-px bg-stone-300 my-8" />
-
-      <p className="text-stone-800 text-lg mb-1 font-medium">Triple S Ranch</p>
-      <p className="text-stone-700 text-sm italic mb-10">
-        (Short for Shit Shower Shave)
-      </p>
-
-      <div className="mb-10">
-        <CountdownTimer />
+      {/* Branding — centers in the space above the wave */}
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 pb-[55vh] text-center px-4">
+        <p className="text-stone-400 uppercase tracking-[0.4em] text-xs mb-6">
+          you have arrived at
+        </p>
+        <h1 className="font-serif text-5xl md:text-7xl font-bold text-stone-800 leading-tight mb-8">
+          AveryandNoelle
+          <span className="text-stone-400 font-normal">.com</span>
+        </h1>
+        <p className="font-serif text-3xl md:text-5xl text-stone-600 leading-snug">
+          Are you{" "}
+          <span className="shimmer-sure font-bold text-4xl md:text-6xl">SURE</span>
+          {" "}this is<br />where you meant to go?
+        </p>
       </div>
 
-      <div className="flex flex-wrap gap-4 justify-center">
-        <Link
-          href="/rsvp"
-          className="px-8 py-3 bg-stone-800 text-white text-sm uppercase tracking-widest hover:bg-stone-700 transition-colors"
+      {/* Wave section */}
+      <div className="absolute bottom-0 left-0 right-0 h-[55vh]">
+
+        {/* Back wave — slowest */}
+        <svg
+          className="absolute bottom-0 left-0 w-[200%] h-full wave-back"
+          viewBox="0 0 2880 300"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
-          RSVP
-        </Link>
-        <Link
-          href="/schedule"
-          className="px-8 py-3 border border-stone-300 text-stone-600 text-sm uppercase tracking-widest hover:border-stone-500 hover:text-stone-800 transition-colors"
+          <path
+            d="M0,150 C240,20 480,280 720,150 C960,20 1200,280 1440,150 C1680,20 1920,280 2160,150 C2400,20 2640,280 2880,150 L2880,300 L0,300 Z"
+            fill="rgba(214,211,209,0.45)"
+          />
+        </svg>
+
+        {/* Mid wave — medium speed, counter-phase */}
+        <svg
+          className="absolute bottom-0 left-0 w-[200%] h-full wave-mid"
+          viewBox="0 0 2880 300"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
-          Schedule
-        </Link>
-      </div>
+          <path
+            d="M0,150 C240,280 480,20 720,150 C960,280 1200,20 1440,150 C1680,280 1920,20 2160,150 C2400,280 2640,20 2880,150 L2880,300 L0,300 Z"
+            fill="rgba(231,229,228,0.65)"
+          />
+        </svg>
+
+        {/* Front wave — fastest, most opaque */}
+        <svg
+          className="absolute bottom-0 left-0 w-[200%] h-full wave-front"
+          viewBox="0 0 2880 300"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,190 C240,60 480,260 720,190 C960,60 1200,260 1440,190 C1680,60 1920,260 2160,190 C2400,60 2640,260 2880,190 L2880,300 L0,300 Z"
+            fill="#f0ece6"
+          />
+        </svg>
+
+        {/* Step 1: Enter button — small, gently chaotic */}
+        {!confirmed && (
+          <div className="absolute top-10 left-1/2 -translate-x-1/2 z-10">
+            <div className="wave-chaos">
+              <button
+                onClick={() => setConfirmed(true)}
+                className="px-4 py-2 bg-stone-800 text-white text-xs uppercase tracking-widest hover:bg-stone-700 transition-colors shadow-md cursor-pointer"
+              >
+                Enter AveryandNoelle.com
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 2: Confirmation */}
+        {confirmed && (
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 text-center px-4">
+            <p className="font-serif text-stone-700 text-lg md:text-xl mb-4 leading-snug">
+              By clicking below you confirm that you understand<br />
+              this site contains <em>no actual wedding information.</em>
+            </p>
+            <Link
+              href="/home"
+              className="inline-block px-6 py-3 bg-stone-800 text-white text-xs uppercase tracking-widest hover:bg-stone-700 transition-colors shadow-md"
+            >
+              I understand and accept my fate
+            </Link>
+          </div>
+        )}
+
+        {/* NoelleandAvery hint — prominent centered card */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-center bg-white/90 backdrop-blur-sm px-8 py-4 shadow-lg border border-stone-200 w-max">
+          <p className="text-stone-500 text-sm italic mb-1">
+            This is probably what you&apos;re looking for:
+          </p>
+          <a
+            href="https://www.noelleandavery.com"
+            className="font-serif text-2xl font-bold text-stone-800 hover:text-stone-500 transition-colors"
+          >
+            NoelleandAvery.com →
+          </a>
+        </div>
       </div>
     </div>
   );
