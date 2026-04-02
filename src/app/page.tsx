@@ -19,23 +19,23 @@ export default function GatePage() {
       <div className="absolute inset-0 bg-[#faf8f5]/80" />
 
       {/* Branding — centers in the space above the wave */}
-      <div className="relative z-10 flex flex-col items-center justify-center flex-1 pb-[55vh] text-center px-4">
-        <p className="text-stone-400 uppercase tracking-[0.4em] text-xs mb-6">
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 pb-[40vh] md:pb-[55vh] text-center px-4">
+        <p className="text-stone-400 uppercase tracking-[0.4em] text-xs mb-4">
           you have arrived at
         </p>
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-stone-800 leading-tight mb-8">
+        <h1 className="font-serif text-4xl md:text-7xl font-bold text-stone-800 leading-tight mb-6">
           AveryandNoelle
           <span className="text-stone-400 font-normal">.com</span>
         </h1>
-        <p className="font-serif text-3xl md:text-5xl text-stone-600 leading-snug">
+        <p className="font-serif text-xl md:text-5xl text-stone-600 leading-snug">
           Are you{" "}
-          <span className="shimmer-sure font-bold text-4xl md:text-6xl">SURE</span>
-          {" "}this is<br />where you meant to go?
+          <span className="shimmer-sure font-bold text-2xl md:text-6xl">SURE</span>
+          {" "}this is where<br className="hidden md:block" /> you meant to go?
         </p>
       </div>
 
       {/* Wave section */}
-      <div className="absolute bottom-0 left-0 right-0 h-[55vh]">
+      <div className="absolute bottom-0 left-0 right-0 h-[40vh] md:h-[55vh]">
 
         {/* Back wave — slowest */}
         <svg
@@ -78,7 +78,7 @@ export default function GatePage() {
 
         {/* Step 1: Enter button — small, gently chaotic */}
         {!confirmed && (
-          <div className="absolute top-10 left-1/2 -translate-x-1/2 z-10">
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
             <div className="wave-chaos">
               <button
                 onClick={() => setConfirmed(true)}
@@ -92,9 +92,9 @@ export default function GatePage() {
 
         {/* Step 2: Confirmation */}
         {confirmed && (
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 text-center px-4">
-            <p className="font-serif text-stone-700 text-lg md:text-xl mb-4 leading-snug">
-              By clicking below you confirm that you understand<br />
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center px-6 w-full max-w-sm">
+            <p className="font-serif text-stone-700 text-base md:text-xl mb-4 leading-snug">
+              By clicking below you confirm that you understand
               this site contains <em>no actual wedding information.</em>
             </p>
             <Link
@@ -107,13 +107,13 @@ export default function GatePage() {
         )}
 
         {/* NoelleandAvery hint — prominent centered card */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-center bg-white/90 backdrop-blur-sm px-8 py-4 shadow-lg border border-stone-200 w-max">
-          <p className="text-stone-500 text-sm italic mb-1">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-center bg-white/90 backdrop-blur-sm px-5 py-3 shadow-lg border border-stone-200 w-max max-w-[90vw]">
+          <p className="text-stone-500 text-xs italic mb-1">
             This is probably what you&apos;re looking for:
           </p>
           <a
             href="https://www.noelleandavery.com"
-            className="font-serif text-2xl font-bold text-stone-800 hover:text-stone-500 transition-colors"
+            className="font-serif text-lg md:text-2xl font-bold text-stone-800 hover:text-stone-500 transition-colors"
           >
             NoelleandAvery.com →
           </a>
