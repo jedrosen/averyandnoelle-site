@@ -19,7 +19,7 @@ export default function GatePage() {
       <div className="absolute inset-0 bg-[#faf8f5]/80" />
 
       {/* Branding — centers in the space above the wave */}
-      <div className="relative z-10 flex flex-col items-center justify-center flex-1 pb-[40vh] md:pb-[55vh] text-center px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 pb-[55vh] md:pb-[65vh] text-center px-4">
         <p className="text-stone-400 uppercase tracking-[0.4em] text-xs mb-4">
           you have arrived at
         </p>
@@ -35,9 +35,9 @@ export default function GatePage() {
       </div>
 
       {/* Wave section */}
-      <div className="absolute bottom-0 left-0 right-0 h-[40vh] md:h-[55vh]">
+      <div className="absolute bottom-0 left-0 right-0 h-[55vh] md:h-[65vh]">
 
-        {/* Back wave — slowest */}
+        {/* Back wave — slowest, violet */}
         <svg
           className="absolute bottom-0 left-0 w-[200%] h-full wave-back"
           viewBox="0 0 2880 300"
@@ -46,11 +46,11 @@ export default function GatePage() {
         >
           <path
             d="M0,150 C240,20 480,280 720,150 C960,20 1200,280 1440,150 C1680,20 1920,280 2160,150 C2400,20 2640,280 2880,150 L2880,300 L0,300 Z"
-            fill="rgba(214,211,209,0.45)"
+            fill="rgba(167,139,250,0.3)"
           />
         </svg>
 
-        {/* Mid wave — medium speed, counter-phase */}
+        {/* Mid wave — medium speed, pink */}
         <svg
           className="absolute bottom-0 left-0 w-[200%] h-full wave-mid"
           viewBox="0 0 2880 300"
@@ -59,11 +59,11 @@ export default function GatePage() {
         >
           <path
             d="M0,150 C240,280 480,20 720,150 C960,280 1200,20 1440,150 C1680,280 1920,20 2160,150 C2400,280 2640,20 2880,150 L2880,300 L0,300 Z"
-            fill="rgba(231,229,228,0.65)"
+            fill="rgba(244,114,182,0.28)"
           />
         </svg>
 
-        {/* Front wave — fastest, most opaque */}
+        {/* Front wave — fastest, warm peach/gold */}
         <svg
           className="absolute bottom-0 left-0 w-[200%] h-full wave-front"
           viewBox="0 0 2880 300"
@@ -72,7 +72,7 @@ export default function GatePage() {
         >
           <path
             d="M0,190 C240,60 480,260 720,190 C960,60 1200,260 1440,190 C1680,60 1920,260 2160,190 C2400,60 2640,260 2880,190 L2880,300 L0,300 Z"
-            fill="#f0ece6"
+            fill="rgba(251,191,36,0.35)"
           />
         </svg>
 
