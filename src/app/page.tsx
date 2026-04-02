@@ -76,9 +76,11 @@ export default function GatePage() {
           />
         </svg>
 
-        {/* Step 1: Enter button — small, gently chaotic */}
-        {!confirmed && (
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
+        {/* All interactive elements — grouped, sitting inside the waves */}
+        <div className="absolute top-[28%] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-4 w-full px-4">
+
+          {/* Step 1: Enter button */}
+          {!confirmed && (
             <div className="wave-chaos">
               <button
                 onClick={() => setConfirmed(true)}
@@ -87,36 +89,37 @@ export default function GatePage() {
                 Enter AveryandNoelle.com
               </button>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Step 2: Confirmation */}
-        {confirmed && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center px-6 w-full max-w-sm">
-            <p className="font-serif text-stone-700 text-base md:text-xl mb-4 leading-snug">
-              By clicking below you confirm that you understand
-              this site contains <em>no actual wedding information.</em>
+          {/* Step 2: Confirmation */}
+          {confirmed && (
+            <div className="text-center max-w-sm">
+              <p className="font-serif text-stone-700 text-base md:text-xl mb-4 leading-snug">
+                By clicking below you confirm that you understand
+                this site contains <em>no actual wedding information.</em>
+              </p>
+              <Link
+                href="/home"
+                className="inline-block px-6 py-3 bg-stone-800 text-white text-xs uppercase tracking-widest hover:bg-stone-700 transition-colors shadow-md"
+              >
+                I understand and accept my fate
+              </Link>
+            </div>
+          )}
+
+          {/* NoelleandAvery hint — right below the entry buttons */}
+          <div className="text-center bg-white/90 backdrop-blur-sm px-5 py-3 shadow-lg border border-stone-200 max-w-[90vw]">
+            <p className="text-stone-500 text-xs italic mb-1">
+              This is probably what you&apos;re looking for:
             </p>
-            <Link
-              href="/home"
-              className="inline-block px-6 py-3 bg-stone-800 text-white text-xs uppercase tracking-widest hover:bg-stone-700 transition-colors shadow-md"
+            <a
+              href="https://www.noelleandavery.com"
+              className="font-serif text-lg md:text-2xl font-bold text-stone-800 hover:text-stone-500 transition-colors"
             >
-              I understand and accept my fate
-            </Link>
+              NoelleandAvery.com →
+            </a>
           </div>
-        )}
 
-        {/* NoelleandAvery hint — prominent centered card */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-center bg-white/90 backdrop-blur-sm px-5 py-3 shadow-lg border border-stone-200 w-max max-w-[90vw]">
-          <p className="text-stone-500 text-xs italic mb-1">
-            This is probably what you&apos;re looking for:
-          </p>
-          <a
-            href="https://www.noelleandavery.com"
-            className="font-serif text-lg md:text-2xl font-bold text-stone-800 hover:text-stone-500 transition-colors"
-          >
-            NoelleandAvery.com →
-          </a>
         </div>
       </div>
     </div>
